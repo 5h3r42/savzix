@@ -1,20 +1,15 @@
 
-
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-r from-pink-500 to-purple-500 text-white py-20">
-      <div className="max-w-7xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold">
-          Your Beauty, Your Style
-        </h1>
-        <p className="mt-4 text-lg">
-          Discover the finest beauty products with exclusive offers.
-        </p>
-        <button className="mt-6 bg-white text-pink-600 px-6 py-3 rounded-full font-bold hover:bg-gray-200">
-          Shop Now
-        </button>
-      </div>
-    </section>
+    <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg shadow-lg p-10 max-w-7xl mx-auto mt-6">
+      <h1 className="text-5xl font-bold mb-4">Your Beauty, Your Style</h1>
+      <p className="text-xl mb-6">
+        Discover the finest beauty products with exclusive offers.
+      </p>
+      <button className="bg-white text-pink-600 font-bold py-2 px-6 rounded-full hover:bg-gray-100">
+        Shop Now
+      </button>
+    </div>
   );
 };
 
