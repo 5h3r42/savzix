@@ -1,14 +1,18 @@
 
 import Navbar from "../components/Navbar";
+import CategoryBar from "../components/CategoryBar";
 import Hero from "../components/Hero";
 import ProductList from "../components/ProductList";
 import FeatureBar from "../components/FeatureBar";
 import Footer from "../components/Footer";
 
+
+
 const Home = () => {
   return (
-    <div>
+    <div >
       <Navbar />
+      <CategoryBar />
       <Hero />
       <ProductList />
       <FeatureBar />
