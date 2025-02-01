@@ -1,4 +1,3 @@
-import React from "react";
 
 const products = [
   { id: 1, name: "Lipstick", price: "$12.99", image: "💄" },
