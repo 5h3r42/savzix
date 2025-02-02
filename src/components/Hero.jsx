@@ -1,4 +1,3 @@
-import React from "react";
 import Image1 from "../assets/images/products/category/BeautyAndSkincare/Wilkinson Sword Barber’s Beard Balm - 56g.png";
 import Image2 from "../assets/images/products/category/BeautyAndSkincare/Wilkinson Sword Hydro 5 Razor + 12 Blades.png";
 import Image3 from "../assets/images/products/category/BeautyAndSkincare/Wilkinson Sword Hydro Comfort for Men - 4 Razor Refills.png";
