@@ -1,5 +1,3 @@
-import React from "react";
-
 const Hero = () => {
   return (
     <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg shadow-lg p-10 max-w-7xl mx-auto mt-6 relative overflow-hidden">
