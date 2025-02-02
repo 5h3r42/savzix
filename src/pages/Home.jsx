@@ -1,18 +1,12 @@
-
-import Navbar from "../components/Navbar";
-import CategoryBar from "../components/CategoryBar";
 import Hero from "../components/Hero";
 import ProductList from "../components/ProductList";
 import FeatureBar from "../components/FeatureBar";
 import Footer from "../components/Footer";
 
-
-
 const Home = () => {
   return (
-    <div >
-      <Navbar />
-      <CategoryBar />
+    <div>
+      {/* Navbar and CategoryBar are already included globally through Header in App.jsx */}
       <Hero />
       <ProductList />
       <FeatureBar />

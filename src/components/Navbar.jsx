@@ -1,12 +1,18 @@
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="bg-white shadow sticky top-0 w-full z-20 h-16">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <h1 className="text-2xl font-bold" style={{ color: "#1f3a8a" }}>
+        {/* Make SAVZIX logo clickable */}
+        <Link
+          to="/"
+          className="text-2xl font-bold"
+          style={{ color: "#1f3a8a" }}
+        >
           SAVZIX
-        </h1>
+        </Link>
+
         <div className="flex-1 flex justify-center">
           <input
             type="text"
@@ -28,4 +34,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-``;
