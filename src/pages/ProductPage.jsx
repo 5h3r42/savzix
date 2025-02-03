@@ -1,116 +1,57 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const products = [
-  {
-    id: 1,
-    name: "Oral-B Essential Dental Floss 50 m – Pack of 6",
-    price: "£9.99",
-    image: "https://example.com/dental-floss-image.jpg", // Replace with your actual image URL
-    description:
-      "Oral-B Essential Dental Floss removes plaque and debris with ease, promoting healthier gums and fresher breath.",
-    features: [
-      "Effective Cleaning: Removes plaque and debris from hard-to-reach areas.",
-      "Shred-Resistant: Durable design for smooth, comfortable use.",
-      "Daily Oral Care: Perfect addition to your dental routine.",
-      "Value Pack: Includes 6 spools, each 50 meters long.",
-    ],
-    category: "Toiletries",
-  },
-];
+const productData = {
+  id: 1,
+  name: "Zip Tote Basket",
+  price: "$140",
+  description:
+    "The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, shoulder sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.",
+  image: "https://via.placeholder.com/500", // Replace this with the actual image URL
+};
 
 const ProductPage = () => {
-  const { id } = useParams();
-  const product = products.find((item) => item.id === parseInt(id));
-  const [quantity, setQuantity] = useState(1);
-
-  if (!product) {
-    return (
-      <div className="max-w-7xl mx-auto p-6 text-center">
-        Product not found.
-      </div>
-    );
-  }
-
-  const handleQuantityChange = (change) => {
-    setQuantity((prev) => Math.max(1, prev + change)); // Prevent quantity from being less than 1
-  };
+  const { id } = useParams(); // Dynamic product fetching when integrated
+  const product = productData;
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-4">
-        <a href="/" className="hover:text-pink-600">
-          Home
-        </a>{" "}
-        &gt;{" "}
-        <a
-          href={`/category/${product.category
-            .toLowerCase()
-            .replace(/ & /g, "")
-            .replace(/\s/g, "")}`}
-          className="hover:text-pink-600"
-        >
-          {product.category}
-        </a>{" "}
-        &gt; <span className="text-gray-800 font-medium">{product.name}</span>
-      </nav>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Product Image */}
-        <div className="flex items-center justify-center bg-gray-100 rounded-lg p-10">
+    <div className="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Left Side: Product Image */}
+        <div>
           <img
             src={product.image}
             alt={product.name}
-            className="max-w-full h-auto rounded-lg shadow-md"
+            className="w-full h-auto rounded-lg object-contain"
           />
         </div>
 
-        {/* Product Details */}
-        <div className="flex flex-col">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            {product.name}
-          </h1>
-          <p className="text-2xl font-bold text-pink-600">{product.price}</p>
-          <p className="text-gray-700 mt-4">{product.description}</p>
+        {/* Right Side: Product Details */}
+        <div>
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <p className="text-xl text-pink-600 font-semibold">{product.price}</p>
+          <p className="text-gray-700 mb-4">{product.description}</p>
 
-          {/* Features */}
-          <ul className="mt-4 list-disc list-inside text-gray-600">
-            {product.features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-
-          {/* Quantity and Add to Basket */}
-          <div className="mt-6 flex items-center">
-            <button
-              onClick={() => handleQuantityChange(-1)}
-              className="px-3 py-1 border rounded-l bg-gray-200 text-gray-700 hover:bg-gray-300"
-            >
-              −
-            </button>
-            <input
-              type="text"
-              value={quantity}
-              readOnly
-              className="w-12 text-center border-y border-gray-300"
-            />
-            <button
-              onClick={() => handleQuantityChange(1)}
-              className="px-3 py-1 border rounded-r bg-gray-200 text-gray-700 hover:bg-gray-300"
-            >
-              +
-            </button>
-
-            <button className="ml-4 bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700 transition">
-              Add to Basket
-            </button>
-          </div>
-
-          {/* Category */}
-          <p className="mt-4 text-gray-500">
-            <strong>Category:</strong> {product.category}
-          </p>
+          {/* Add to Cart Button */}
+          <button className="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700">
+            Add to Cart
+          </button>
         </div>
+      </div>
+
+      {/* Expandable Sections */}
+      <div className="mt-8">
+        {["Features", "Shipping", "Returns"].map((section) => (
+          <div key={section} className="border-b py-4">
+            <details>
+              <summary className="font-medium text-gray-700 cursor-pointer">
+                {section}
+              </summary>
+              <p className="mt-2 text-gray-500 text-sm">
+                Details about {section.toLowerCase()}.
+              </p>
+            </details>
+          </div>
+        ))}
       </div>
     </div>
   );
