@@ -1,26 +1,22 @@
 const ProductCard = ({ product }) => {
   return (
-    <div
-      className="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300 
-                 hover:scale-105 hover:shadow-2xl"
-    >
-      {/* Product Image */}
+    <div className="bg-white rounded-lg shadow-md p-4 transform transition-all duration-300 hover:shadow-2xl hover:scale-105">
       <img
         src={product.image}
         alt={product.name}
-        className="w-40 h-40 object-contain mx-auto mb-4" // Increased from w-32 h-32 to w-40 h-40
+        className="w-full h-40 object-contain mb-4"
       />
 
-      {/* Product Title */}
-      <h3 className="text-xl font-bold">{product.name}</h3>
-
-      {/* Product Price */}
-      <p className="text-pink-600 text-lg font-semibold">{product.price}</p>
-
-      {/* Add to Cart Button */}
-      <button className="mt-4 bg-pink-600 text-white py-2 px-4 rounded transition-all duration-300 hover:bg-pink-700">
-        Add to Cart
-      </button>
+      {/* Left-aligned content with text control */}
+      <div className="text-left">
+        <h3 className="text-lg font-semibold truncate max-w-full">
+          {product.name}
+        </h3>
+        <p className="text-pink-600 text-lg font-semibold">{product.price}</p>
+        <button className="mt-2 bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-800 transition-transform duration-300">
+          Add to Cart
+        </button>
+      </div>
     </div>
   );
 };
