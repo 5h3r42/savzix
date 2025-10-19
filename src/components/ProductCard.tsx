@@ -1,14 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { Price, Product } from "@/lib/types";
-
-const formatPrice = ({ amount, currency }: Price) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    minimumFractionDigits: 2,
-  }).format(amount);
+import { PriceTag } from "./PriceTag";
+import type { Product } from "@/lib/types";
 
 type ProductCardProps = {
   product: Product;
@@ -17,7 +11,7 @@ type ProductCardProps = {
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.01] transition hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg focus-within:-translate-y-1 focus-within:border-foreground/25 focus-within:shadow-lg">
-      <Link href={`/shop/${product.slug}`} className="contents">
+      <Link href={`/product/${product.id}`} className="contents">
         <div className="relative aspect-[4/5] w-full overflow-hidden bg-foreground/[0.06]">
           {product.media?.[0] ? (
             <Image
@@ -46,7 +40,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <p className="text-sm text-foreground/70">{product.summary}</p>
           )}
           <footer className="mt-auto flex items-center justify-between pt-2 text-sm font-semibold text-foreground">
-            <span>{formatPrice(product.price)}</span>
+            <PriceTag price={product.price} />
             {product.isFeatured ? (
               <span className="rounded-full bg-foreground text-background px-3 py-1 text-xs uppercase tracking-[0.18em]">
                 Featured
