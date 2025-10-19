@@ -5,8 +5,7 @@ const categories: Record<string, Category> = {
     id: "savzix-skincare",
     name: "Skincare",
     slug: "skincare",
-    description:
-      "Formulas developed to brighten, balance, and protect every complexion.",
+    description: "Formulas developed to brighten, balance, and protect every complexion.",
     imageUrl: "https://images.savzix.com/categories/skincare.jpg",
   },
   haircare: {
@@ -21,16 +20,14 @@ const categories: Record<string, Category> = {
     id: "savzix-fragrance",
     name: "Fragrance",
     slug: "fragrance",
-    description:
-      "Signature scents with layered accords inspired by modern architecture.",
+    description: "Signature scents with layered accords inspired by modern architecture.",
     imageUrl: "https://images.savzix.com/categories/fragrance.jpg",
   },
   wellness: {
     id: "savzix-wellness",
     name: "Wellness",
     slug: "wellness",
-    description:
-      "Daily rituals blending botanicals and bioactive nutrients for balance.",
+    description: "Daily rituals blending botanicals and bioactive nutrients for balance.",
     imageUrl: "https://images.savzix.com/categories/wellness.jpg",
   },
 };
@@ -136,9 +133,7 @@ export const allProducts: Product[] = [
     category: categories.haircare,
     createdAt: "2025-02-09T08:00:00.000Z",
     tags: ["volume", "detangling"],
-    media: [
-      "https://images.savzix.com/products/weightless-volume-conditioner.jpg",
-    ],
+    media: ["https://images.savzix.com/products/weightless-volume-conditioner.jpg"],
     isFeatured: false,
     available: true,
   },
@@ -252,10 +247,7 @@ export const allProducts: Product[] = [
 export const featured = allProducts.filter((product) => product.isFeatured);
 
 export const newArrivals = [...allProducts]
-  .sort(
-    (a, b) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  )
+  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
   .slice(0, 6);
 
 export const getProductById = (id: string) =>

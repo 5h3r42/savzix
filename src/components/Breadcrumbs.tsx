@@ -17,17 +17,17 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   }
 
   return (
-    <nav
-      aria-label="Breadcrumb"
-      className={className}
-    >
-      <ol className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.3em] text-foreground/50">
+    <nav aria-label="Breadcrumb" className={className}>
+      <ol className="text-foreground/50 flex flex-wrap items-center gap-2 text-xs tracking-[0.3em] uppercase">
         {items.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {item.current || !item.href ? (
               <span className="text-foreground/70">{item.label}</span>
             ) : (
-              <Link href={item.href} className="transition hover:text-foreground">
+              <Link
+                href={item.href}
+                className="hover:text-foreground focus-visible:outline-foreground/35 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
                 {item.label}
               </Link>
             )}

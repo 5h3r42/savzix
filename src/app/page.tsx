@@ -1,34 +1,39 @@
-import Link from "next/link";
-
-import { featured, newArrivals } from "@/lib/products";
+import { allProducts, featured, newArrivals } from "@/lib/products";
 import { ProductGrid } from "@/components/ProductGrid";
+import { HeroSection } from "@/components/HeroSection";
+import { CategoryGrid } from "@/components/CategoryGrid";
 
 export default function Home() {
+  const categoryMap = new Map<
+    string,
+    {
+      id: string;
+      name: string;
+      slug: string;
+      description?: string;
+      imageUrl?: string;
+    }
+  >();
+
+  for (const product of allProducts) {
+    const category = product.category;
+    if (!categoryMap.has(category.id)) {
+      categoryMap.set(category.id, {
+        id: category.id,
+        name: category.name,
+        slug: category.slug,
+        description: category.description,
+        imageUrl: category.imageUrl,
+      });
+    }
+  }
+
+  const categories = Array.from(categoryMap.values());
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-foreground/[0.02] to-transparent">
-      <section className="relative mx-auto flex max-w-5xl flex-col gap-8 px-6 pb-20 pt-24 sm:px-10 md:pt-28">
-        <header className="space-y-6 text-center sm:text-left">
-          <p className="text-xs uppercase tracking-[0.3em] text-foreground/55">
-            Savzix Store
-          </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Elevated care for skin, hair, and home rituals.
-          </h1>
-          <p className="text-base text-foreground/70 sm:max-w-xl">
-            Discover science-led formulations and sensory experiences curated by
-            Savzix. Thoughtfully designed for everyday rituals that feel like a
-            getaway.
-          </p>
-        </header>
-        <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-          <Link href="/shop" className="btn btn-primary w-full sm:w-auto">
-            Explore the collection
-          </Link>
-          <Link href="#new-arrivals" className="btn btn-outline w-full sm:w-auto">
-            New arrivals
-          </Link>
-        </div>
-      </section>
+    <div className="from-foreground/[0.02] min-h-screen bg-gradient-to-b to-transparent">
+      <HeroSection />
+      <CategoryGrid title="Shop by category" categories={categories} />
 
       <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 pb-24 sm:px-10">
         <ProductGrid

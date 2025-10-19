@@ -23,6 +23,7 @@ type CartContextValue = {
   add: (product: Product, qty?: number) => void;
   remove: (id: string) => void;
   updateQty: (id: string, qty: number) => void;
+  clear: () => void;
 };
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
@@ -122,6 +123,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const clear = useCallback(() => {
+    setItems([]);
+  }, []);
+
   const totals = useMemo<Totals>(() => {
     return items.reduce(
       (acc, item) => {
@@ -140,8 +145,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       add,
       remove,
       updateQty,
+      clear,
     }),
-    [items, totals, add, remove, updateQty],
+    [items, totals, add, remove, updateQty, clear],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
