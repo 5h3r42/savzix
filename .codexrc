@@ -1,0 +1,84 @@
+# ===========================================================
+# Savzix E-Commerce Project — Codex Persistent Context
+# ===========================================================
+project_name: Savzix Store
+description: >
+  A modern, responsive e-commerce website for men and women offering
+  health and beauty products. Built using Next.js 14 (App Router),
+  TypeScript, Tailwind CSS, and Framer Motion for premium design and animations.
+
+goals:
+  - Build a high-end, gender-neutral health & beauty shopping experience.
+  - Maintain a clean, scalable, and modular architecture.
+  - Deliver a polished UI consistent with modern e-commerce standards.
+  - Ensure accessibility, responsiveness, and performance.
+  - Keep the experience smooth and visually refined.
+
+stack:
+  frontend:
+    - Next.js 14
+    - TypeScript
+    - Tailwind CSS
+    - Framer Motion
+    - Shadcn/UI
+    - Lucide Icons
+  state_management:
+    - React Context API
+    - (Optional) Zustand for global state
+  payments:
+    - Stripe (planned integration)
+  deployment:
+    - Vercel
+
+pages:
+  - Home (Navigation, Hero, Categories, New Products, Featured Products, Footer)
+  - Shop (All Products Grid + Filters)
+  - Product Detail (/product/[id])
+  - Cart (View + Update Items)
+  - Checkout (Form + Payment Integration)
+  - About Us (Mission + Story)
+  - Contact Us (Contact Form)
+
+design:
+  theme: "Light mode by default — white, gray, soft rose, beige accents"
+  style:
+    - Clean and minimalist
+    - Rounded corners (2xl)
+    - Soft shadows and balanced spacing
+    - Smooth transitions via Framer Motion
+  typography:
+    - Sans-serif modern font (e.g., Inter, Outfit)
+  ui_system:
+    - Shadcn/UI components for consistency
+
+coding_guidelines:
+  - Use reusable, prop-driven components.
+  - Maintain type safety across the app.
+  - Write clean, readable, production-grade code.
+  - Organize logic in /src/lib and /src/context.
+  - Comment non-obvious logic and animation patterns.
+  - Optimize for SEO (metadata, structured layout).
+  - Follow accessibility best practices.
+
+repository:
+  name: savzixstore
+  root_folder_structure:
+    - src/app/
+    - src/components/
+    - src/context/
+    - src/lib/
+    - public/
+    - src/styles/
+    - .codexrc
+
+instructions:
+  - Always place new pages under src/app (App Router).
+  - Place shared UI in src/components; state in src/context; helpers in src/lib.
+  - Use modern patterns (server components where possible; edge-ready APIs if relevant).
+  - Provide setup steps for any new dependency.
+  - When adding UI, include Tailwind classes and accessibility notes.
+  - For multi-file outputs, specify exact file paths under src/.
+
+auto_context:
+  - Use this file as the base project definition for all /plan and /build tasks.
+  - Maintain consistency with existing naming, styling, and folder conventions.
