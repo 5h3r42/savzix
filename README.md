@@ -50,3 +50,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 2. Copy the returned URL and set it as `PRODUCTS_JSON_URL`.
 3. Redeploy the project so the new environment variable is available.
 4. Open `/admin/products` to add products; they will appear on `/shop` automatically.
+
+## Blob Diagnostic
+
+Test the Vercel Blob connection by visiting `/api/blob/diag` after deployment. The expected JSON response is:
+
+```json
+{ "wrote": true, "url": "https://public.blob.vercel-storage.com/.../cms/_diag.txt" }
+```
+
+If `wrote` returns `false`, verify that:
+- `export const runtime = "nodejs"` is set for any routes using Blob.
+- `BLOB_READ_WRITE_TOKEN` is defined in your Vercel environment variables for Development, Preview, and Production.
