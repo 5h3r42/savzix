@@ -36,3 +36,17 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 # savzix
+
+## CMS Setup
+
+### Environment Variables (Vercel → Settings → Environment Variables)
+
+- `BLOB_READ_WRITE_TOKEN` – auto-created by Vercel Blob when you enable Blob storage.
+- `PRODUCTS_JSON_URL` – URL returned by `/api/cms/init`.
+
+### Usage
+
+1. Visit `/api/cms/init` once to create `cms/products.json` in Vercel Blob.
+2. Copy the returned URL and set it as `PRODUCTS_JSON_URL`.
+3. Redeploy the project so the new environment variable is available.
+4. Open `/admin/products` to add products; they will appear on `/shop` automatically.
