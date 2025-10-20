@@ -74,7 +74,7 @@ export function ProductGrid({ title, description, products, id }: ProductGridPro
         </header>
       )}
       <motion.div
-        className="grid gap-7 sm:grid-cols-2 md:gap-8 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         variants={gridVariants}
       >
         {products.map((product) => (

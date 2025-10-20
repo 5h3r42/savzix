@@ -75,37 +75,34 @@ export function CategoryGrid({ title, categories }: CategoryGridProps) {
       )}
       <motion.div
         variants={gridVariants}
-        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         {categories.map((category) => (
           <motion.div key={category.id} variants={itemVariants}>
             <Link
               href={`/shop?category=${encodeURIComponent(category.id)}`}
-              className="group border-foreground/10 bg-foreground/[0.02] hover:border-foreground/25 hover:bg-foreground/[0.05] focus-visible:outline-foreground/35 flex h-full flex-col overflow-hidden rounded-3xl border transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+              className="group relative overflow-hidden rounded-2xl border border-foreground/10 transition hover:border-teal-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
             >
-              <div className="bg-foreground/[0.08] relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative aspect-[16/9] w-full">
                 {category.imageUrl ? (
                   <Image
                     src={category.imageUrl}
                     alt={`${category.name} category`}
                     fill
-                    className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
-                    sizes="(min-width: 1280px) 240px, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-500 motion-safe:group-hover:scale-105"
+                    sizes="(min-width:1280px) 33vw, (min-width:768px) 50vw, 100vw"
                   />
                 ) : (
-                  <div className="text-foreground/40 flex h-full items-center justify-center text-sm">
+                  <div className="flex h-full w-full items-center justify-center bg-foreground/10 text-sm text-foreground/40">
                     Imagery coming soon
                   </div>
                 )}
-              </div>
-              <div className="flex flex-1 flex-col gap-2 p-5">
-                <h3 className="text-foreground text-lg font-semibold">{category.name}</h3>
-                {category.description && (
-                  <p className="text-foreground/70 text-sm">{category.description}</p>
-                )}
-                <span className="text-foreground/60 mt-auto text-xs tracking-[0.25em] uppercase">
-                  Shop {category.name}
-                </span>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-opacity duration-500 group-hover:via-black/30" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4">
+                  <h3 className="text-lg font-semibold text-white drop-shadow-lg">
+                    {category.name}
+                  </h3>
+                </div>
               </div>
             </Link>
           </motion.div>
