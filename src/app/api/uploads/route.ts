@@ -40,9 +40,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ url });
   } catch (error) {
     console.error("Blob upload failed:", error);
-    return NextResponse.json(
-      { error: "Unable to upload image." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Unable to upload image." }, { status: 400 });
   }
 }

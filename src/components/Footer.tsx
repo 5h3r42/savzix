@@ -1,11 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-} from "lucide-react";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 const socialLinks = [
   { href: "https://instagram.com", label: "Instagram", icon: Instagram },
@@ -22,24 +18,24 @@ const navigationLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-foreground/10 bg-white/95 font-sans text-foreground shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
+    <footer className="border-foreground/10 text-foreground mt-16 border-t bg-white/95 font-sans shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12 sm:px-10 lg:flex-row lg:items-start lg:justify-between">
         <div className="space-y-3">
-          <span className="text-lg font-semibold uppercase tracking-[0.4em] text-foreground">
+          <span className="text-foreground text-lg font-semibold tracking-[0.4em] uppercase">
             Savzix
           </span>
-          <p className="max-w-xs text-sm text-foreground/70">
-            Modern rituals for skin, hair, fragrance, and wellness—crafted with
-            precision and designed for everyday indulgence.
+          <p className="text-foreground/70 max-w-xs text-sm">
+            Modern rituals for skin, hair, fragrance, and wellness—crafted with precision
+            and designed for everyday indulgence.
           </p>
         </div>
 
-        <nav className="flex flex-col gap-3 text-sm text-foreground/75 sm:flex-row sm:gap-6">
+        <nav className="text-foreground/75 flex flex-col gap-3 text-sm sm:flex-row sm:gap-6">
           {navigationLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="transition hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground/35"
+              className="hover:text-foreground focus-visible:outline-foreground/35 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
             >
               {link.label}
             </Link>
@@ -47,7 +43,7 @@ export default function Footer() {
         </nav>
 
         <div className="flex flex-col gap-4">
-          <span className="text-xs uppercase tracking-[0.25em] text-foreground/60">
+          <span className="text-foreground/60 text-xs tracking-[0.25em] uppercase">
             Follow Savzix
           </span>
           <div className="flex gap-3">
@@ -60,7 +56,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/15 bg-[#f8f1ee] text-foreground transition hover:border-foreground/30 hover:bg-[#f2e5df] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground/35"
+                  className="border-foreground/15 text-foreground hover:border-foreground/30 focus-visible:outline-foreground/35 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-[#f8f1ee] transition hover:bg-[#f2e5df] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
                 >
                   <Icon className="h-5 w-5" strokeWidth={1.5} />
                 </a>
@@ -69,8 +65,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-foreground/10 bg-[#fdf8f5]">
-        <p className="mx-auto max-w-6xl px-6 py-6 text-center text-xs text-foreground/60 sm:px-10">
+      <div className="border-foreground/10 border-t bg-[#fdf8f5]">
+        <p className="text-foreground/60 mx-auto max-w-6xl px-6 py-6 text-center text-xs sm:px-10">
           © 2025 Savzix. All rights reserved.
         </p>
       </div>
