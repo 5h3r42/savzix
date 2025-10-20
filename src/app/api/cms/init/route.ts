@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 import { head, put } from "@vercel/blob";
 
 export const runtime = "nodejs";
@@ -18,29 +17,34 @@ async function ensureCmsBlob() {
     }
   }
 
-  const blob = await put(
-    KEY,
-    JSON.stringify({ products: [] }),
-    {
-      access: "public",
-      contentType: "application/json",
-      addRandomSuffix: false,
-    },
-  );
+  const blob = await put(KEY, JSON.stringify({ products: [] }), {
+    access: "public",
+    contentType: "application/json",
+    addRandomSuffix: false,
+    allowOverwrite: true,
+  });
 
   return { url: blob.url };
 }
 
-async function handler(_request: NextRequest) {
+async function handler() {
   try {
-    const payload = await ensureCmsBlob();
-    return NextResponse.json(payload);
+    const existing = await head(KEY).catch(() => null);
+    if (existing?.url) {
+      return NextResponse.json({ url: existing.url });
+    }
+
+    const blob = await put(KEY, JSON.stringify({ products: [] }), {
+      access: "public",
+      contentType: "application/json",
+      addRandomSuffix: false,
+      allowOverwrite: true,
+    });
+
+    return NextResponse.json({ url: blob.url });
   } catch (error) {
-    console.error("Failed to initialize CMS blob:", error);
-    return NextResponse.json(
-      { error: "Unable to initialize CMS storage." },
-      { status: 500 },
-    );
+    console.error("CMS init error:", error);
+    return NextResponse.json({ error: "Unable to initialize CMS storage." }, { status: 500 });
   }
 }
 
