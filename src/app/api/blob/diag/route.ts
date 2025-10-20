@@ -8,6 +8,7 @@ export async function GET() {
     const blob = await put("cms/_diag.txt", "ok", {
       access: "public",
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
     return NextResponse.json({ wrote: true, url: blob.url });
   } catch (error) {
