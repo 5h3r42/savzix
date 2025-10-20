@@ -26,18 +26,18 @@ export function Navbar() {
   };
 
   return (
-    <header className="border-foreground/10 bg-background/80 sticky top-0 z-40 border-b backdrop-blur-md">
+    <header className="bg-gradient-to-r from-teal-700/95 via-teal-600/90 to-teal-700/95 sticky top-0 z-40 border-b border-teal-500/40 text-white backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4 sm:px-10">
         <Link
           href="/"
           onClick={closeMenu}
-          className="text-sm font-semibold tracking-[0.3em] uppercase"
+          className="text-sm font-semibold uppercase tracking-[0.3em] text-white"
         >
           Savzix
         </Link>
         <button
           type="button"
-          className="border-foreground/20 text-foreground hover:border-foreground/40 hover:bg-foreground/[0.04] focus-visible:outline-foreground/40 inline-flex items-center justify-center rounded-full border p-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 lg:hidden"
+          className="border-white/20 text-white hover:border-teal-200/70 hover:bg-white/10 focus-visible:outline-teal-200 inline-flex items-center justify-center rounded-full border p-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 lg:hidden"
           aria-controls="primary-navigation"
           aria-expanded={isMenuOpen}
           onClick={handleToggle}
@@ -59,7 +59,7 @@ export function Navbar() {
           </svg>
         </button>
         <div
-          className="text-foreground/70 hidden items-center gap-5 text-sm lg:flex"
+          className="hidden items-center gap-5 text-sm text-white/80 lg:flex"
           aria-label="Main navigation"
         >
           {links.map((link) => {
@@ -68,8 +68,8 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`hover:text-foreground focus-visible:outline-foreground/40 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${
-                  isActive ? "text-foreground font-medium" : ""
+                className={`transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 hover:text-teal-200 ${
+                  isActive ? "text-white font-medium" : ""
                 }`}
               >
                 {link.label}
@@ -84,11 +84,11 @@ export function Navbar() {
               ? `Cart, ${totals.count} item${totals.count === 1 ? "" : "s"}`
               : "Cart, empty"
           }
-          className="border-foreground/15 text-foreground hover:border-foreground/30 hover:bg-foreground/[0.04] focus-visible:outline-foreground/40 relative inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs tracking-[0.25em] uppercase transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+          className="relative inline-flex items-center justify-center rounded-full border border-white/25 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white transition hover:border-teal-200 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200"
         >
           Cart
           {totals.count > 0 && (
-            <span className="bg-foreground text-background ml-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full text-[11px] font-semibold">
+            <span className="ml-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-white text-teal-700 text-[11px] font-semibold">
               {totals.count}
             </span>
           )}
@@ -102,11 +102,11 @@ export function Navbar() {
       <nav
         id="primary-navigation"
         aria-label="Main navigation"
-        className={`border-foreground/10 bg-background/95 border-t px-6 py-4 shadow-sm motion-safe:transition-all motion-safe:duration-200 lg:hidden ${
+        className={`border-teal-500/40 bg-teal-700/95 px-6 py-4 shadow-lg motion-safe:transition-all motion-safe:duration-200 lg:hidden ${
           isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 overflow-hidden opacity-0"
         }`}
       >
-        <ul className="text-foreground/80 flex flex-col gap-3 text-sm">
+        <ul className="flex flex-col gap-3 text-sm text-white/85">
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -114,13 +114,13 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   onClick={closeMenu}
-                  className={`hover:border-foreground/15 hover:bg-foreground/[0.03] focus-visible:outline-foreground/40 flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${
-                    isActive ? "text-foreground font-medium" : ""
+                  className={`flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition hover:border-white/20 hover:bg-white/10 hover:text-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 ${
+                    isActive ? "text-white font-medium" : ""
                   }`}
                 >
                   <span>{link.label}</span>
                   <svg
-                    className="text-foreground/40 h-4 w-4"
+                    className="h-4 w-4 text-white/50"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
