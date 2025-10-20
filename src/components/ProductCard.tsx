@@ -46,7 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <footer className="text-foreground mt-auto flex items-center justify-between pt-2 text-sm font-semibold">
             <PriceTag price={product.price} />
             {product.isFeatured ? (
-              <span className="bg-foreground text-background rounded-full px-3 py-1 text-xs tracking-[0.18em] uppercase">
+              <span className="bg-teal-600 text-white rounded-full px-3 py-1 text-xs tracking-[0.18em] uppercase">
                 Featured
               </span>
             ) : (

@@ -18,55 +18,60 @@ const navigationLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-foreground/10 text-foreground mt-16 border-t bg-white/95 font-sans shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12 sm:px-10 lg:flex-row lg:items-start lg:justify-between">
-        <div className="space-y-3">
-          <span className="text-foreground text-lg font-semibold tracking-[0.4em] uppercase">
+    <footer className="mt-16 rounded-t-3xl border-t border-teal-500 bg-gradient-to-br from-teal-700 via-teal-600 to-teal-600 text-white shadow-[0_-12px_40px_rgba(15,118,110,0.25)]">
+      <div className="mx-auto max-w-6xl px-6 py-12 sm:px-10">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+          <div className="space-y-3">
+            <span className="text-lg font-semibold tracking-[0.35em] uppercase">
             Savzix
           </span>
-          <p className="text-foreground/70 max-w-xs text-sm">
-            Modern rituals for skin, hair, fragrance, and wellness—crafted with precision
-            and designed for everyday indulgence.
-          </p>
-        </div>
+            <p className="max-w-xs text-sm text-white/80">
+              Health &amp; Beauty for Everyone. Rituals inspired by science and crafted
+              for daily indulgence.
+            </p>
+          </div>
 
-        <nav className="text-foreground/75 flex flex-col gap-3 text-sm sm:flex-row sm:gap-6">
-          {navigationLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-foreground focus-visible:outline-foreground/35 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+          <nav className="flex flex-col gap-3 text-sm text-white/80">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white">
+              Navigate
+            </span>
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition hover:text-teal-300 focus-visible:text-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
-        <div className="flex flex-col gap-4">
-          <span className="text-foreground/60 text-xs tracking-[0.25em] uppercase">
-            Follow Savzix
-          </span>
-          <div className="flex gap-3">
-            {socialLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="border-foreground/15 text-foreground hover:border-foreground/30 focus-visible:outline-foreground/35 inline-flex h-10 w-10 items-center justify-center rounded-full border bg-[#f8f1ee] transition hover:bg-[#f2e5df] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                >
-                  <Icon className="h-5 w-5" strokeWidth={1.5} />
-                </a>
-              );
-            })}
+          <div className="space-y-4">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white">
+              Connect
+            </span>
+            <div className="flex gap-3">
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 transition hover:border-teal-300 hover:bg-white/20 hover:text-teal-300 focus-visible:border-teal-300 focus-visible:bg-white/20 focus-visible:text-teal-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
+                  >
+                    <Icon className="h-5 w-5" strokeWidth={1.5} />
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
-      <div className="border-foreground/10 border-t bg-[#fdf8f5]">
-        <p className="text-foreground/60 mx-auto max-w-6xl px-6 py-6 text-center text-xs sm:px-10">
+      <div className="border-teal-500/60 border-t bg-teal-700/60">
+        <p className="mx-auto max-w-6xl px-6 py-6 text-center text-xs text-white/70 sm:px-10">
           © 2025 Savzix. All rights reserved.
         </p>
       </div>
