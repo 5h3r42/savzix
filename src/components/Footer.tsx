@@ -23,8 +23,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           <div className="space-y-3">
             <span className="text-lg font-semibold tracking-[0.35em] uppercase">
-            Savzix
-          </span>
+              Savzix
+            </span>
             <p className="max-w-xs text-sm text-white/80">
               Health &amp; Beauty for Everyone. Rituals inspired by science and crafted
               for daily indulgence.
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
 
           <nav className="flex flex-col gap-3 text-sm text-white/80">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white">
+            <span className="text-xs font-semibold tracking-[0.25em] text-white uppercase">
               Navigate
             </span>
             {navigationLinks.map((link) => (
@@ -47,7 +47,7 @@ export default function Footer() {
           </nav>
 
           <div className="space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-white">
+            <span className="text-xs font-semibold tracking-[0.25em] text-white uppercase">
               Connect
             </span>
             <div className="flex gap-3">
@@ -70,7 +70,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-teal-500/60 border-t bg-teal-700/60">
+      <div className="border-t border-teal-500/60 bg-teal-700/60">
         <p className="mx-auto max-w-6xl px-6 py-6 text-center text-xs text-white/70 sm:px-10">
           © 2025 Savzix. All rights reserved.
         </p>

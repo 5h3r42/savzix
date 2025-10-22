@@ -55,7 +55,9 @@ export async function writeProducts(data: ProductsPayload) {
   });
 }
 
-export async function addProduct(product: Omit<CmsProduct, "id" | "slug" | "createdAt" | "updatedAt">) {
+export async function addProduct(
+  product: Omit<CmsProduct, "id" | "slug" | "createdAt" | "updatedAt">,
+) {
   const existing = await readProducts();
   const timestamp = new Date().toISOString();
   const id = Date.now().toString();

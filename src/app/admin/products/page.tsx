@@ -48,21 +48,21 @@ export default async function AdminProductsPage() {
   return (
     <main className="mx-auto max-w-3xl space-y-10 px-4 py-12 sm:px-6 lg:px-0">
       <header className="space-y-2 text-center sm:text-left">
-        <p className="text-sm uppercase tracking-[0.3em] text-teal-600">Dashboard</p>
-        <h1 className="text-3xl font-semibold text-foreground sm:text-4xl">
+        <p className="accent-label text-sm tracking-[0.3em] uppercase">Dashboard</p>
+        <h1 className="text-foreground text-3xl font-semibold sm:text-4xl">
           Savzix Admin – Products
         </h1>
-        <p className="text-sm text-foreground/70">
+        <p className="text-foreground/70 text-sm">
           Manage storefront products stored in the Savzix CMS Blob.
         </p>
       </header>
 
-      <section className="rounded-3xl border border-teal-100 bg-white/80 p-6 shadow-sm backdrop-blur">
+      <section className="surface-panel rounded-3xl border p-6 shadow-sm backdrop-blur">
         <form action={createProductAction} className="space-y-5">
           <div className="space-y-2">
             <label
               htmlFor="name"
-              className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70"
+              className="text-foreground/70 text-xs font-semibold tracking-[0.25em] uppercase"
             >
               Name *
             </label>
@@ -78,7 +78,7 @@ export default async function AdminProductsPage() {
           <div className="space-y-2">
             <label
               htmlFor="description"
-              className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70"
+              className="text-foreground/70 text-xs font-semibold tracking-[0.25em] uppercase"
             >
               Description *
             </label>
@@ -95,7 +95,7 @@ export default async function AdminProductsPage() {
             <div className="space-y-2">
               <label
                 htmlFor="price"
-                className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70"
+                className="text-foreground/70 text-xs font-semibold tracking-[0.25em] uppercase"
               >
                 Price *
               </label>
@@ -113,7 +113,7 @@ export default async function AdminProductsPage() {
             <div className="space-y-2">
               <label
                 htmlFor="tags"
-                className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70"
+                className="text-foreground/70 text-xs font-semibold tracking-[0.25em] uppercase"
               >
                 Tags
               </label>
@@ -129,7 +129,7 @@ export default async function AdminProductsPage() {
           <div className="space-y-2">
             <label
               htmlFor="imageUrl"
-              className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70"
+              className="text-foreground/70 text-xs font-semibold tracking-[0.25em] uppercase"
             >
               Image URL
             </label>
@@ -152,16 +152,16 @@ export default async function AdminProductsPage() {
       <section className="space-y-4">
         <header className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-foreground">Existing products</h2>
-            <p className="text-sm text-foreground/65">
-              {sortedProducts.length} product{sortedProducts.length === 1 ? "" : "s"} stored
-              in CMS.
+            <h2 className="text-foreground text-xl font-semibold">Existing products</h2>
+            <p className="text-foreground/65 text-sm">
+              {sortedProducts.length} product{sortedProducts.length === 1 ? "" : "s"}{" "}
+              stored in CMS.
             </p>
           </div>
         </header>
 
         {sortedProducts.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-teal-200 bg-teal-50/60 px-5 py-6 text-center text-sm text-teal-700">
+          <p className="surface-muted rounded-2xl border border-dashed px-5 py-6 text-center text-sm">
             No products yet—use the form above to add your first item.
           </p>
         ) : (
@@ -169,30 +169,28 @@ export default async function AdminProductsPage() {
             {sortedProducts.map((product) => (
               <li
                 key={product.id}
-                className="rounded-2xl border border-teal-100 bg-white/80 p-5 shadow-sm transition hover:border-teal-300"
+                className="surface-panel rounded-2xl border p-5 shadow-sm transition hover:border-[color:var(--border-strong)]"
               >
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="space-y-1">
-                    <h3 className="text-lg font-semibold text-foreground">
+                    <h3 className="text-foreground text-lg font-semibold">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-foreground/65">{product.description}</p>
+                    <p className="text-foreground/65 text-sm">{product.description}</p>
                   </div>
-                  <div className="text-right text-sm text-foreground">
-                    <span className="font-semibold">
-                      £{product.price.toFixed(2)}
-                    </span>
-                    <p className="text-xs text-foreground/60">
+                  <div className="text-foreground text-right text-sm">
+                    <span className="font-semibold">£{product.price.toFixed(2)}</span>
+                    <p className="text-foreground/60 text-xs">
                       Added {new Date(product.createdAt).toLocaleString()}
                     </p>
                   </div>
                 </div>
                 {product.tags.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-teal-700">
+                  <div className="text-foreground/70 mt-3 flex flex-wrap gap-2 text-xs tracking-[0.2em] uppercase">
                     {product.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1"
+                        className="accent-chip rounded-full border px-3 py-1"
                       >
                         {tag}
                       </span>

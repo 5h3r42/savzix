@@ -60,5 +60,6 @@ Test the Vercel Blob connection by visiting `/api/blob/diag` after deployment. T
 ```
 
 If `wrote` returns `false`, verify that:
+
 - `export const runtime = "nodejs"` is set for any routes using Blob.
 - `BLOB_READ_WRITE_TOKEN` is defined in your Vercel environment variables for Development, Preview, and Production.
