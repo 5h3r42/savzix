@@ -26,7 +26,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <main className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-12 sm:px-10 lg:flex-row lg:gap-16 lg:py-16">
       <div className="flex-1">
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-teal-100 bg-teal-50/40">
+        <div className="surface-panel relative aspect-[4/5] w-full overflow-hidden rounded-3xl border">
           {product.imageUrl ? (
             <Image
               src={product.imageUrl}
@@ -37,7 +37,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               priority
             />
           ) : (
-            <div className="flex h-full items-center justify-center text-sm text-foreground/50">
+            <div className="text-foreground/50 flex h-full items-center justify-center text-sm">
               Image coming soon
             </div>
           )}
@@ -46,16 +46,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <section className="flex flex-1 flex-col gap-6">
         <header className="space-y-3">
-          <p className="text-xs uppercase tracking-[0.3em] text-teal-600">Savzix Store</p>
-          <h1 className="text-3xl font-semibold text-foreground sm:text-4xl">
+          <p className="accent-label text-xs tracking-[0.3em] uppercase">Savzix Store</p>
+          <h1 className="text-foreground text-3xl font-semibold sm:text-4xl">
             {product.name}
           </h1>
-          <p className="text-lg font-semibold text-foreground">{priceLabel}</p>
+          <p className="text-foreground text-lg font-semibold">{priceLabel}</p>
         </header>
 
-        <article className="space-y-4 text-sm text-foreground/75">
+        <article className="text-foreground/75 space-y-4 text-sm">
           <p>{product.description}</p>
-          <div className="rounded-3xl border border-teal-100 bg-teal-50/70 p-5 text-xs uppercase tracking-[0.2em] text-teal-700">
+          <div className="surface-muted rounded-3xl border p-5 text-xs tracking-[0.2em] uppercase">
             Crafted with care and science-backed ingredients for modern rituals.
           </div>
         </article>
@@ -67,12 +67,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
 
         {tags.length > 0 && (
-          <ul className="flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-teal-700">
+          <ul className="text-foreground/70 flex flex-wrap gap-2 text-xs tracking-[0.2em] uppercase">
             {tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1"
-              >
+              <li key={tag} className="accent-chip rounded-full border px-3 py-1">
                 {tag}
               </li>
             ))}

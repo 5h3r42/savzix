@@ -81,7 +81,7 @@ export function CategoryGrid({ title, categories }: CategoryGridProps) {
           <motion.div key={category.id} variants={itemVariants}>
             <Link
               href={`/shop?category=${encodeURIComponent(category.id)}`}
-              className="group relative overflow-hidden rounded-2xl border border-foreground/10 transition hover:border-teal-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
+              className="group border-foreground/10 relative overflow-hidden rounded-2xl border transition hover:border-teal-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-300"
             >
               <div className="relative aspect-[16/9] w-full">
                 {category.imageUrl ? (
@@ -93,7 +93,7 @@ export function CategoryGrid({ title, categories }: CategoryGridProps) {
                     sizes="(min-width:1280px) 33vw, (min-width:768px) 50vw, 100vw"
                   />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-foreground/10 text-sm text-foreground/40">
+                  <div className="bg-foreground/10 text-foreground/40 flex h-full w-full items-center justify-center text-sm">
                     Imagery coming soon
                   </div>
                 )}

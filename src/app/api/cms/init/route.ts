@@ -19,7 +19,10 @@ export async function GET() {
   } catch (error) {
     console.error("CMS init error:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unable to initialize CMS storage." },
+      {
+        error:
+          error instanceof Error ? error.message : "Unable to initialize CMS storage.",
+      },
       { status: 500 },
     );
   }

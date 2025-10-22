@@ -4,7 +4,9 @@ import type { Product } from "@/lib/types";
 
 export const runtime = "nodejs";
 
-function normalizeProducts(cmsProducts: Awaited<ReturnType<typeof readProducts>>["products"]): Product[] {
+function normalizeProducts(
+  cmsProducts: Awaited<ReturnType<typeof readProducts>>["products"],
+): Product[] {
   return cmsProducts.map((product) => ({
     id: product.id,
     name: product.name,
@@ -50,7 +52,7 @@ export default async function ShopPage() {
           products={normalizedProducts}
         />
       ) : (
-        <div className="border-foreground/10 bg-foreground/[0.02] flex items-center justify-center rounded-3xl border px-6 py-20 text-center text-sm text-foreground/60">
+        <div className="border-foreground/10 bg-foreground/[0.02] text-foreground/60 flex items-center justify-center rounded-3xl border px-6 py-20 text-center text-sm">
           No products yet. Add items from the admin dashboard to populate the shop.
         </div>
       )}

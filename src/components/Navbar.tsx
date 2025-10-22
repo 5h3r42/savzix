@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Moon, Sun } from "lucide-react";
 
 import { useCart } from "@/context/CartContext";
+import { useTheme } from "@/context/ThemeContext";
 
 const links = [
   { href: "/shop", label: "Shop" },
@@ -16,6 +18,11 @@ export function Navbar() {
   const { totals } = useCart();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  const isDark = theme === "dark";
+  const ModeIcon = isDark ? Sun : Moon;
+  const modeLabel = isDark ? "Switch to light mode" : "Switch to dark mode";
 
   const handleToggle = () => {
     setIsMenuOpen((prev) => !prev);
@@ -26,18 +33,18 @@ export function Navbar() {
   };
 
   return (
-    <header className="bg-gradient-to-r from-teal-700/95 via-teal-600/90 to-teal-700/95 sticky top-0 z-40 border-b border-teal-500/40 text-white backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-teal-500/40 bg-gradient-to-r from-teal-700/95 via-teal-600/90 to-teal-700/95 text-white backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4 sm:px-10">
         <Link
           href="/"
           onClick={closeMenu}
-          className="text-sm font-semibold uppercase tracking-[0.3em] text-white"
+          className="text-sm font-semibold tracking-[0.3em] text-white uppercase"
         >
           Savzix
         </Link>
         <button
           type="button"
-          className="border-white/20 text-white hover:border-teal-200/70 hover:bg-white/10 focus-visible:outline-teal-200 inline-flex items-center justify-center rounded-full border p-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 lg:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-white/20 p-2 text-white transition hover:border-teal-200/70 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 lg:hidden"
           aria-controls="primary-navigation"
           aria-expanded={isMenuOpen}
           onClick={handleToggle}
@@ -68,8 +75,8 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 hover:text-teal-200 ${
-                  isActive ? "text-white font-medium" : ""
+                className={`transition hover:text-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 ${
+                  isActive ? "font-medium text-white" : ""
                 }`}
               >
                 {link.label}
@@ -77,27 +84,40 @@ export function Navbar() {
             );
           })}
         </div>
-        <Link
-          href="/cart"
-          aria-label={
-            totals.count > 0
-              ? `Cart, ${totals.count} item${totals.count === 1 ? "" : "s"}`
-              : "Cart, empty"
-          }
-          className="relative inline-flex items-center justify-center rounded-full border border-white/25 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white transition hover:border-teal-200 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200"
-        >
-          Cart
-          {totals.count > 0 && (
-            <span className="ml-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-white text-teal-700 text-[11px] font-semibold">
-              {totals.count}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/cart"
+            aria-label={
+              totals.count > 0
+                ? `Cart, ${totals.count} item${totals.count === 1 ? "" : "s"}`
+                : "Cart, empty"
+            }
+            className="relative inline-flex items-center justify-center rounded-full border border-white/25 px-4 py-2 text-xs tracking-[0.25em] text-white uppercase transition hover:border-teal-200 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200"
+          >
+            Cart
+            {totals.count > 0 && (
+              <span
+                className={`ml-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full text-[11px] font-semibold ${isDark ? "bg-white/90 text-teal-900" : "bg-white text-teal-700"}`}
+              >
+                {totals.count}
+              </span>
+            )}
+            <span className="sr-only" aria-live="polite">
+              {totals.count > 0
+                ? `${totals.count} item${totals.count === 1 ? "" : "s"} in cart`
+                : "Cart empty"}
             </span>
-          )}
-          <span className="sr-only" aria-live="polite">
-            {totals.count > 0
-              ? `${totals.count} item${totals.count === 1 ? "" : "s"} in cart`
-              : "Cart empty"}
-          </span>
-        </Link>
+          </Link>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-pressed={isDark}
+            aria-label={modeLabel}
+            className="hidden h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-teal-200/70 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 lg:inline-flex"
+          >
+            <ModeIcon className="h-4 w-4" strokeWidth={1.75} />
+          </button>
+        </div>
       </div>
       <nav
         id="primary-navigation"
@@ -107,6 +127,21 @@ export function Navbar() {
         }`}
       >
         <ul className="flex flex-col gap-3 text-sm text-white/85">
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                toggleTheme();
+                closeMenu();
+              }}
+              aria-pressed={isDark}
+              aria-label={modeLabel}
+              className="flex w-full items-center justify-between rounded-2xl border border-white/20 px-4 py-3 text-left font-medium transition hover:border-white/30 hover:bg-white/10 hover:text-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200"
+            >
+              <span>{isDark ? "Light mode" : "Dark mode"}</span>
+              <ModeIcon className="h-4 w-4" strokeWidth={1.75} />
+            </button>
+          </li>
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -115,7 +150,7 @@ export function Navbar() {
                   href={link.href}
                   onClick={closeMenu}
                   className={`flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition hover:border-white/20 hover:bg-white/10 hover:text-teal-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-200 ${
-                    isActive ? "text-white font-medium" : ""
+                    isActive ? "font-medium text-white" : ""
                   }`}
                 >
                   <span>{link.label}</span>
